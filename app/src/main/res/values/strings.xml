@@ -1,3 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">HireHub</string>
+    <string name="tagline">Your career, elevated.</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="upload_resume">Upload Resume (PDF)</string>
+    <string name="analyze_resume">Analyze Resume</string>
+    <string name="job_listings">Job Listings</string>
+    <string name="saved_jobs">Saved Jobs</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="error_generic">Something went wrong. Please try again.</string>
+    <string name="ats_score">ATS Score</string>
+    <string name="strengths">Strengths</string>
+    <string name="improvements">Improvements</string>
+    <string name="missing_skills">Missing Skills</string>
+    <string name="recommended_roles">Recommended Roles</string>
+    <string name="hirehub">HireHub</string>
+    <string name="your_career_elevated">Your career, elevated.</string>
 </resources>

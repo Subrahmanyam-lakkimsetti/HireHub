@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorTextDark2nd">#6B7280</color>
+    <!-- Brand Colors -->
+    <color name="primary">#1A73E8</color>
+    <color name="primary_dark">#1557B0</color>
+    <color name="primary_light">#4A90E2</color>
+    <color name="accent">#00C853</color>
+
+    <!-- Surface Colors -->
+    <color name="background">#F8F9FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="splash_bg">#1A73E8</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#1A1A2E</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_70">#B3FFFFFF</color>
+
+    <!-- Status Colors -->
+    <color name="success">#00C853</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#F44336</color>
+
+    <!-- ATS Score Colors -->
+    <color name="score_low">#F44336</color>
+    <color name="score_medium">#FF9800</color>
+    <color name="score_high">#00C853</color>
 </resources>
