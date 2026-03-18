@@ -18,7 +18,6 @@ data class Job(
     var isSaved: Boolean = false
 ) : Serializable
 
-// ─── Remotive API response models ───────────────────────────────────────────
 
 data class RemotiveResponse(
     @SerializedName("jobs") val jobs: List<RemotiveJob>

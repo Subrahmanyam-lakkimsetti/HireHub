@@ -12,14 +12,7 @@ import kotlinx.coroutines.withContext
 
 object PdfExtractor {
 
-    /**
-     * Extracts plain text from a PDF Uri entirely on-device.
-     * Runs on IO dispatcher — safe to call from any coroutine.
-     *
-     * Returns Result<String>:
-     *   - success → cleaned, capped extracted text
-     *   - failure → descriptive error the UI can show directly
-     */
+
     suspend fun extractText(context: Context, pdfUri: Uri): Result<String> =
         withContext(Dispatchers.IO) {
             try {
