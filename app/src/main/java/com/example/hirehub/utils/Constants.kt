@@ -2,12 +2,13 @@ package com.example.hirehub.utils
 
 object Constants {
 
-
+    // Realtime Database
+// Realtime Database Nodes
     const val RTDB_USERS_NODE = "users"
     const val RTDB_SAVED_JOBS_NODE = "saved_jobs"
     const val COLLECTION_RESUMES = "resumes"
 
-
+    // Add to existing Constants.kt
     const val RTDB_RESUMES_NODE = "resumes"
     const val MAX_PDF_SIZE_MB = 5.0
 
@@ -24,7 +25,8 @@ object Constants {
 
     // Intent Keys
     const val EXTRA_RESUME_TEXT = "extra_resume_text"
-
+    const val EXTRA_JOB_ID = "extra_job_id"
+    const val EXTRA_JOB_OBJECT = "extra_job_object"
 
     // SharedPrefs
     const val PREFS_NAME = "hirehub_prefs"
