@@ -1,12 +1,12 @@
-package com.example.hirehub.ui.viewmodels
+package com.hirehuborg.careers.ui.viewmodels
 
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.hirehub.data.model.ResumeAnalysis
-import com.example.hirehub.domain.usecases.AnalyzeResumeUseCase
+import com.hirehuborg.careers.data.model.ResumeAnalysis
+import com.hirehuborg.careers.domain.usecases.AnalyzeResumeUseCase
 import kotlinx.coroutines.launch
 
 // ── State ────────────────────────────────────────────────────────────────────

@@ -1,7 +1,7 @@
-package com.example.hirehub.domain.usecases
+package com.hirehuborg.careers.domain.usecases
 
-import com.example.hirehub.data.model.ResumeAnalysis
-import com.example.hirehub.data.repository.AnalysisRepository
+import com.hirehuborg.careers.data.model.ResumeAnalysis
+import com.hirehuborg.careers.data.repository.AnalysisRepository
 
 class AnalyzeResumeUseCase(
     private val repository: AnalysisRepository = AnalysisRepository()

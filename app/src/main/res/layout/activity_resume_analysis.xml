@@ -148,7 +148,7 @@
                         android:layout_marginBottom="16dp" />
 
                     <!-- ✅ Real Canvas ScoreCircleView -->
-                    <com.example.hirehub.ui.views.ScoreCircleView
+                    <com.hirehuborg.careers.ui.views.ScoreCircleView
                         android:id="@+id/scoreCircleView"
                         android:layout_width="180dp"
                         android:layout_height="180dp" />
