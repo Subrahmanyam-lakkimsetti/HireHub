@@ -20,32 +20,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HireHub">
-
+        <activity
+            android:name=".ui.activities.JobDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.JobListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.ResumeAnalysisActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.SkillDetectionActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.ResumeUploadActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.activities.RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.activities.LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-
     </application>
 
 </manifest>

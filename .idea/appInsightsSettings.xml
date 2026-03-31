@@ -3,13 +3,27 @@
   <component name="AppInsightsSettings">
     <option name="tabSettings">
       <map>
+        <entry key="Android Vitals">
+          <value>
+            <InsightsFilterSettings>
+              <option name="connection">
+                <ConnectionSetting>
+                  <option name="appId" value="com.hirehuborg.careers" />
+                </ConnectionSetting>
+              </option>
+              <option name="signal" value="SIGNAL_UNSPECIFIED" />
+              <option name="timeIntervalDays" value="SEVEN_DAYS" />
+              <option name="visibilityType" value="ALL" />
+            </InsightsFilterSettings>
+          </value>
+        </entry>
         <entry key="Firebase Crashlytics">
           <value>
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.example.hirehub" />
-                  <option name="mobileSdkAppId" value="1:31598155872:android:b1c3deae2de870e6410b05" />
+                  <option name="appId" value="com.hirehuborg.careers" />
+                  <option name="mobileSdkAppId" value="1:31598155872:android:2fa9fe1714f1997f410b05" />
                   <option name="projectId" value="hirehub-ad0e7" />
                   <option name="projectNumber" value="31598155872" />
                 </ConnectionSetting>

@@ -1,4 +1,4 @@
-package com.example.hirehub.utils
+package com.hirehuborg.careers.utils
 
 object Constants {
 
@@ -21,7 +21,7 @@ object Constants {
     const val ADZUNA_BASE_URL = "https://api.adzuna.com/v1/api/"
 
     // Gemini
-    const val GEMINI_MODEL = "gemini-1.5-flash"
+    const val GEMINI_MODEL = "gemini-2.5-flash"
 
     // Intent Keys
     const val EXTRA_RESUME_TEXT = "extra_resume_text"
@@ -33,7 +33,10 @@ object Constants {
     const val PREF_USER_ID = "user_id"
     const val PREF_USER_EMAIL = "user_email"
 
-    const val MAX_EXTRACTED_CHARS = 12_000
+
+    const val EXTRA_DETECTED_SKILLS = "extra_detected_skills"
+
+    const val MAX_EXTRACTED_CHARS = 4_000
 
     // Skill Keywords (used in Module 4)
     val SKILL_KEYWORDS = listOf(

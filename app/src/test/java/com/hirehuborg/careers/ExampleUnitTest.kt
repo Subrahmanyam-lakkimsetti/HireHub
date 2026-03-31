@@ -1,4 +1,4 @@
-package com.example.hirehub
+package com.hirehuborg.careers
 
 import org.junit.Test
 

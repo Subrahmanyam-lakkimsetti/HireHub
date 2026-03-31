@@ -1,12 +1,12 @@
-package com.example.hirehub.ui.viewmodels
+package com.hirehuborg.careers.ui.viewmodels
 
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.hirehub.data.model.User
-import com.example.hirehub.data.repository.AuthRepository
+import com.hirehuborg.careers.data.model.User
+import com.hirehuborg.careers.data.repository.AuthRepository
 import kotlinx.coroutines.launch
 
 sealed class AuthState {

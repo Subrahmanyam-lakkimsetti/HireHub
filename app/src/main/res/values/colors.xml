@@ -27,4 +27,19 @@
     <color name="score_low">#F44336</color>
     <color name="score_medium">#FF9800</color>
     <color name="score_high">#00C853</color>
+
+    <color name="skill_language">#E3F2FD</color>
+    <color name="skill_language_text">#0D47A1</color>
+
+    <color name="skill_framework">#E8F5E9</color>
+    <color name="skill_framework_text">#1B5E20</color>
+
+    <color name="skill_database">#FFF3E0</color>
+    <color name="skill_database_text">#E65100</color>
+
+    <color name="skill_cloud">#F3E5F5</color>
+    <color name="skill_cloud_text">#4A148C</color>
+
+    <color name="skill_tools">#FCE4EC</color>
+    <color name="skill_tools_text">#880E4F</color>
 </resources>
