@@ -130,13 +130,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
 
-    // Already in your build.gradle.kts — just confirm
-//    implementation("com.squareup.retrofit2:retrofit:2.11.0")
-//    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
-//    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-//    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-//    implementation("com.google.code.gson:gson:2.11.0")
-
 // Add this new one for pull-to-refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
@@ -144,6 +137,12 @@ dependencies {
     // Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.1")
     implementation("androidx.cardview:cardview:1.0.0")
+
+    // Shimmer loading effect
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+    // Lottie animations
+    implementation("com.airbnb.android:lottie:6.3.0")
 
     // Testing
     testImplementation("junit:junit:4.13.2")

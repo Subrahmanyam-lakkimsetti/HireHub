@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "31598155872",
+    "firebase_url": "https://hirehub-ad0e7-default-rtdb.firebaseio.com",
     "project_id": "hirehub-ad0e7",
     "storage_bucket": "hirehub-ad0e7.firebasestorage.app"
   },
@@ -10,6 +11,44 @@
         "mobilesdk_app_id": "1:31598155872:android:b1c3deae2de870e6410b05",
         "android_client_info": {
           "package_name": "com.example.hirehub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhhBEiXMVVOJlWO894dve8_RhUlAFLMf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31598155872:android:efe21ca5ea2be5f7410b05",
+        "android_client_info": {
+          "package_name": "com.hirehub.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhhBEiXMVVOJlWO894dve8_RhUlAFLMf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31598155872:android:2fa9fe1714f1997f410b05",
+        "android_client_info": {
+          "package_name": "com.hirehuborg.careers"
         }
       },
       "oauth_client": [],

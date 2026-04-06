@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorTextDark2nd">#6B7280</color>
     <!-- Brand Colors -->
     <color name="primary">#1A73E8</color>
@@ -42,4 +42,8 @@
 
     <color name="skill_tools">#FCE4EC</color>
     <color name="skill_tools_text">#880E4F</color>
+
+
+    <color name="bottom_nav_selected">#1565C0</color>
+    <color name="bottom_nav_unselected">#9E9E9E</color>
 </resources>

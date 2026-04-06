@@ -1,12 +1,12 @@
-package com.example.hirehub.data.repository
+package com.hirehuborg.careers.data.repository
 
 import android.content.Context
 import android.net.Uri
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.example.hirehub.data.model.ResumeData
-import com.example.hirehub.utils.Constants
-import com.example.hirehub.utils.PdfExtractor
+import com.hirehuborg.careers.data.model.ResumeData
+import com.hirehuborg.careers.utils.Constants
+import com.hirehuborg.careers.utils.PdfExtractor
 import kotlinx.coroutines.tasks.await
 
 class ResumeRepository(private val context: Context) {

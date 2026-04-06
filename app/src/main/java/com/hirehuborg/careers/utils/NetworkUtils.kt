@@ -1,4 +1,4 @@
-package com.example.hirehub.utils
+package com.hirehuborg.careers.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

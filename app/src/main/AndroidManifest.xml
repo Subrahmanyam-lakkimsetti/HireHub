@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HireHub">
         <activity
+            android:name=".ui.activities.SavedJobsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.JobDetailActivity"
             android:exported="false" />
         <activity
@@ -51,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true" />
     </application>
 

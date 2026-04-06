@@ -1,4 +1,4 @@
-package com.example.hirehub.ui.viewmodels
+package com.hirehuborg.careers.ui.viewmodels
 
 import android.app.Application
 import android.net.Uri
@@ -6,8 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.hirehub.data.model.ResumeData
-import com.example.hirehub.data.repository.ResumeRepository
+import com.hirehuborg.careers.data.model.ResumeData
+import com.hirehuborg.careers.data.repository.ResumeRepository
 import kotlinx.coroutines.launch
 
 // ── State sealed class ───────────────────────────────────────────────────────

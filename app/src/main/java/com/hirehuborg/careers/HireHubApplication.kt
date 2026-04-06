@@ -1,4 +1,4 @@
-package com.example.hirehub
+package com.hirehuborg.careers
 
 import android.app.Application
 import com.tom_roush.pdfbox.android.PDFBoxResourceLoader

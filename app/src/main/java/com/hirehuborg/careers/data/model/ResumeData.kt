@@ -1,4 +1,4 @@
-package com.example.hirehub.data.model
+package com.hirehuborg.careers.data.model
 
 
 data class ResumeData(

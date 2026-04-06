@@ -1,10 +1,10 @@
-package com.example.hirehub.utils
+package com.hirehuborg.careers.utils
 
 
 import android.content.Context
 import android.net.Uri
 import android.provider.OpenableColumns
-import com.example.hirehub.utils.Constants.MAX_EXTRACTED_CHARS
+import com.hirehuborg.careers.utils.Constants.MAX_EXTRACTED_CHARS
 import com.tom_roush.pdfbox.pdmodel.PDDocument
 import com.tom_roush.pdfbox.text.PDFTextStripper
 import kotlinx.coroutines.Dispatchers
