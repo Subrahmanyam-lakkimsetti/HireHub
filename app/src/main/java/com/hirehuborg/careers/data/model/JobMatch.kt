@@ -1,5 +1,7 @@
 package com.hirehuborg.careers.data.model
 
+
+
 /**
  * Wraps a Job with its computed match score and matched skill list.
  * This is what the adapter and UI work with — never raw Job directly.

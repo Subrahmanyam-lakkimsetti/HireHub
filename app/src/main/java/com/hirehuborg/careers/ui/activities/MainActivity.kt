@@ -16,6 +16,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthRecentLoginRequiredException
 import com.hirehuborg.careers.R
 import com.hirehuborg.careers.data.model.JobMatch
 import com.hirehuborg.careers.data.repository.SavedJobsRepository
@@ -42,7 +44,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    // Nullable bindings — initialized after setContentView
     private var homeBinding:    LayoutTabHomeBinding?    = null
     private var jobsBinding:    LayoutTabJobsBinding?    = null
     private var profileBinding: LayoutTabProfileBinding? = null
@@ -58,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Bind each included layout to its own binding object
         homeBinding    = LayoutTabHomeBinding.bind(
             binding.root.findViewById(R.id.tabHome)
         )
@@ -83,7 +83,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Null out bindings to avoid memory leaks
         homeBinding    = null
         jobsBinding    = null
         profileBinding = null
@@ -115,21 +114,14 @@ class MainActivity : AppCompatActivity() {
     private fun setupHomeTab() {
         val home = homeBinding ?: return
 
-        // ✅ FIX: Build list first, then pass to staggerSlideUp — no ?: return inside listOf()
         val cards = listOf(
             home.cardUploadResume,
-            home.cardAnalyzeResume,
             home.cardBrowseJobs,
             home.cardSavedJobs
         )
         staggerSlideUp(cards, baseDelayMs = 80L)
 
         home.cardUploadResume.setOnClickListener {
-            it.pulse()
-            startActivity(Intent(this, ResumeUploadActivity::class.java))
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        }
-        home.cardAnalyzeResume.setOnClickListener {
             it.pulse()
             startActivity(Intent(this, ResumeUploadActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
@@ -187,6 +179,9 @@ class MainActivity : AppCompatActivity() {
         profile.btnLogout.setOnClickListener {
             showLogoutDialog()
         }
+        profile.btnDeleteAccount.setOnClickListener {
+            showDeleteAccountDialog()
+        }
     }
 
     // ── Observers ─────────────────────────────────────────────────────────────
@@ -200,7 +195,6 @@ class MainActivity : AppCompatActivity() {
             home.tvUserName.text  = user.name
             home.tvUserEmail.text = user.email
 
-            // ✅ FIX: Direct cast to ScoreCircleView — no reflection needed
             if (user.resumeScore > 0) {
                 home.root
                     .findViewById<ScoreCircleView>(R.id.miniScoreView)
@@ -283,8 +277,6 @@ class MainActivity : AppCompatActivity() {
             val jobs = jobsBinding ?: return@observe
 
             jobs.swipeRefreshJobs.isRefreshing = false
-
-            // ✅ Now works directly — no findViewById cast needed
             jobs.shimmerJobs.stopShimmer()
             jobs.shimmerJobs.visibility       = View.GONE
             jobs.layoutJobsLoading.visibility = View.GONE
@@ -369,7 +361,6 @@ class MainActivity : AppCompatActivity() {
                             .indexOfFirst { it.job.id == job.id }
                         if (idx != -1) {
                             jobAdapter.notifyItemChanged(idx)
-                            // ✅ FIX: Use local val to safely access jobsBinding
                             jobsBinding?.rvJobsMain
                                 ?.findViewHolderForAdapterPosition(idx)
                                 ?.itemView
@@ -395,6 +386,45 @@ class MainActivity : AppCompatActivity() {
                 }
                 startActivity(intent)
                 finish()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun showDeleteAccountDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Delete Account")
+            .setMessage("⚠️ This will permanently delete your account and all associated data. This action cannot be undone.")
+            .setPositiveButton("Delete") { _, _ ->
+                val user = FirebaseAuth.getInstance().currentUser
+                if (user == null) {
+                    showSnackbar("No user is currently signed in.")
+                    return@setPositiveButton
+                }
+                // Show a loading indicator while deletion is in progress
+                val profile = profileBinding
+                profile?.progressProfile?.visibility = View.VISIBLE
+                profile?.btnDeleteAccount?.isEnabled = false
+
+                user.delete()
+                    .addOnSuccessListener {
+                        profile?.progressProfile?.visibility = View.GONE
+                        showSnackbar("Account deleted successfully.")
+                        val intent = Intent(this, LoginActivity::class.java).apply {
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        }
+                        startActivity(intent)
+                        finish()
+                    }
+                    .addOnFailureListener { exception ->
+                        profile?.progressProfile?.visibility = View.GONE
+                        profile?.btnDeleteAccount?.isEnabled = true
+                        if (exception is FirebaseAuthRecentLoginRequiredException) {
+                            showSnackbar("Please log out and log back in before deleting your account.")
+                        } else {
+                            showSnackbar("Failed to delete account: ${exception.message}")
+                        }
+                    }
             }
             .setNegativeButton("Cancel", null)
             .show()

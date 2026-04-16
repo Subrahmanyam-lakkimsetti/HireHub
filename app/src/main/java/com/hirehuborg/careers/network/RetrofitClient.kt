@@ -1,8 +1,7 @@
 package com.hirehuborg.careers.network
 
-import com.hirehuborg.careers.data.remote.ArbeitnowApiService
-import com.hirehuborg.careers.data.remote.RemotiveApiService
-import com.hirehuborg.careers.utils.Constants
+import com.hirehuborg.careers.data.remote.AdzunaApiService
+import com.hirehuborg.careers.data.remote.JSearchApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,32 +10,33 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    private val okHttpClient by lazy {
-        val logging = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
-        }
-        OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
-            .build()
+    private val loggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BASIC
     }
 
-    private fun buildRetrofit(baseUrl: String): Retrofit =
+    private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(loggingInterceptor)
+        .connectTimeout(15, TimeUnit.SECONDS)
+        .readTimeout(15, TimeUnit.SECONDS)
+        .build()
+
+    // ── Adzuna India ──────────────────────────────────────────────────────────
+    val adzunaApi: AdzunaApiService by lazy {
         Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl("https://api.adzuna.com/v1/api/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-    val remotiveApi: RemotiveApiService by lazy {
-        buildRetrofit(Constants.REMOTIVE_BASE_URL)
-            .create(RemotiveApiService::class.java)
+            .create(AdzunaApiService::class.java)
     }
 
-    val arbeitnowApi: ArbeitnowApiService by lazy {
-        buildRetrofit(Constants.ARBEITNOW_BASE_URL)
-            .create(ArbeitnowApiService::class.java)
+    // ── JSearch (RapidAPI) ────────────────────────────────────────────────────
+    val jSearchApi: JSearchApiService by lazy {
+        Retrofit.Builder()
+            .baseUrl("https://jsearch.p.rapidapi.com/")
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(JSearchApiService::class.java)
     }
 }

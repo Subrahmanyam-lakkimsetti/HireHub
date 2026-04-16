@@ -1,6 +1,5 @@
 package com.hirehuborg.careers.ui.viewmodels
 
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,7 +32,7 @@ class AuthViewModel : ViewModel() {
                 },
                 onFailure = {
                     _authState.value = AuthState.Error(
-                        it.message?.toFriendlyError() ?: "Login failed"
+                        it.message?.toFriendlyError() ?: "Login failed. Please try again."
                     )
                 }
             )
@@ -50,7 +49,7 @@ class AuthViewModel : ViewModel() {
                 },
                 onFailure = {
                     _authState.value = AuthState.Error(
-                        it.message?.toFriendlyError() ?: "Registration failed"
+                        it.message?.toFriendlyError() ?: "Registration failed. Please try again."
                     )
                 }
             )
@@ -67,12 +66,27 @@ class AuthViewModel : ViewModel() {
     }
 
     private fun String.toFriendlyError(): String = when {
-        contains("email address is already in use") -> "This email is already registered"
-        contains("no user record") || contains("user-not-found") -> "No account found with this email"
-        contains("password is invalid") || contains("wrong-password") -> "Incorrect password"
-        contains("network") || contains("Network") -> "Network error. Check your connection"
-        contains("too-many-requests") -> "Too many attempts. Try again later"
-        contains("email address is badly formatted") -> "Invalid email format"
-        else -> this
+        contains("email address is already in use", ignoreCase = true) ->
+            "This email is already registered."
+        contains("no user record", ignoreCase = true) ||
+                contains("user-not-found", ignoreCase = true) ->
+            "No account found with this email."
+        contains("password is invalid", ignoreCase = true) ||
+                contains("wrong-password", ignoreCase = true) ->
+            "Incorrect password. Please try again."
+        // This is the actual error Firebase throws — caught from your crash log
+        contains("auth credential is incorrect", ignoreCase = true) ||
+                contains("malformed", ignoreCase = true) ||
+                contains("has expired", ignoreCase = true) ||
+                contains("INVALID_LOGIN_CREDENTIALS", ignoreCase = true) ->
+            "Invalid credentials. Please try again."
+        contains("network", ignoreCase = true) ->
+            "Network error. Please check your connection."
+        contains("too-many-requests", ignoreCase = true) ->
+            "Too many attempts. Please try again later."
+        contains("email address is badly formatted", ignoreCase = true) ->
+            "Invalid email format."
+        else ->
+            "Something went wrong. Please try again."
     }
 }

@@ -1,5 +1,6 @@
 package com.hirehuborg.careers.utils
 
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Context
 import android.view.View
@@ -10,36 +11,6 @@ import com.hirehuborg.careers.R
 
 object HireHubAnimUtils {
 
-    // ── Activity Transitions ──────────────────────────────────────────────────
-
-    /**
-     * Call AFTER startActivity() to slide new screen in from right.
-     * Use for forward navigation.
-     */
-    fun Activity.slideInFromRight() {
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-    }
-
-    /**
-     * Call AFTER finish() to slide back to previous screen.
-     * Use for back navigation.
-     */
-    fun Activity.slideOutToRight() {
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
-    }
-
-    /**
-     * Fade transition — use for modal-style screens (analysis, detail).
-     */
-    fun Activity.fadeTransitionIn() {
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-    }
-
-    // ── View Animations ───────────────────────────────────────────────────────
-
-    /**
-     * Fades in a view with optional delay.
-     */
     fun View.fadeIn(durationMs: Long = 350, delayMs: Long = 0) {
         alpha = 0f
         visibility = View.VISIBLE
@@ -50,21 +21,6 @@ object HireHubAnimUtils {
             .start()
     }
 
-    /**
-     * Fades out and hides a view.
-     */
-    fun View.fadeOut(durationMs: Long = 250) {
-        animate()
-            .alpha(0f)
-            .setDuration(durationMs)
-            .withEndAction { visibility = View.GONE }
-            .start()
-    }
-
-    /**
-     * Slides a view up from below with fade.
-     * Great for cards appearing on screen load.
-     */
     fun View.slideUpFadeIn(durationMs: Long = 400, delayMs: Long = 0) {
         alpha = 0f
         translationY = 60f
@@ -78,10 +34,6 @@ object HireHubAnimUtils {
             .start()
     }
 
-    /**
-     * Bounces a view with a quick scale pulse.
-     * Use on save/bookmark actions.
-     */
     fun View.pulse() {
         animate()
             .scaleX(1.2f)
@@ -99,23 +51,15 @@ object HireHubAnimUtils {
 
     /**
      * Shake animation — use on validation errors.
+     * Uses ObjectAnimator — no XML interpolator needed.
      */
     fun View.shake() {
-        val anim = AnimationUtils.loadAnimation(context, android.R.anim.cycle_interpolator)
-        val shake = android.view.animation.TranslateAnimation(0f, 15f, 0f, 0f).apply {
-            duration = 400
-            repeatCount = 4
-            repeatMode = android.view.animation.Animation.REVERSE
+        ObjectAnimator.ofFloat(this, "translationX", 0f, -18f, 18f, -14f, 14f, -10f, 10f, -6f, 6f, 0f).apply {
+            duration = 450
+            start()
         }
-        startAnimation(shake)
     }
 
-    // ── RecyclerView Stagger ──────────────────────────────────────────────────
-
-    /**
-     * Applies a staggered fall-down animation to all RecyclerView items.
-     * Call after submitList() for smooth list appearance.
-     */
     fun RecyclerView.runLayoutAnimation() {
         val controller = AnimationUtils.loadLayoutAnimation(
             context, R.anim.layout_animation_fall_down
@@ -124,12 +68,6 @@ object HireHubAnimUtils {
         scheduleLayoutAnimation()
     }
 
-    // ── Stagger helper for multiple views ────────────────────────────────────
-
-    /**
-     * Animates a list of views sliding up one after another.
-     * Perfect for home screen cards.
-     */
     fun staggerSlideUp(views: List<View>, baseDelayMs: Long = 80L) {
         views.forEachIndexed { index, view ->
             view.slideUpFadeIn(delayMs = index * baseDelayMs)
