@@ -12,16 +12,69 @@ import kotlinx.coroutines.coroutineScope
  * Jobs must contain at least one of these to be shown.
  */
 private val CSE_KEYWORDS = listOf(
-    "software", "developer", "engineer", "programmer", "coder",
-    "android", "ios", "mobile", "web", "frontend", "backend", "fullstack", "full stack",
-    "data science", "machine learning", "ai", "artificial intelligence", "ml",
-    "devops", "cloud", "aws", "azure", "gcp", "sre",
-    "cybersecurity", "security", "network", "system",
-    "java", "kotlin", "python", "javascript", "typescript", "react", "node",
-    "flutter", "swift", "c++", "golang", "rust",
-    "database", "sql", "nosql", "mongodb",
+
+    // 💻 Core Roles
+    "software engineer", "software developer", "application developer",
+    "programmer", "coder", "sde", "sde1", "sde2",
+    "backend developer", "frontend developer", "full stack developer", "fullstack developer",
+
+    // 🌐 Web & App Development
+    "web developer", "web development", "mobile developer", "mobile app developer",
+    "android developer", "ios developer",
+
+    // ⚛️ Frontend
+    "frontend", "front end", "ui developer", "client side",
+    "react", "react.js", "reactjs",
+    "html", "html5", "css", "css3", "javascript", "js", "typescript", "ts",
+    "redux", "tailwind", "bootstrap", "material ui",
+
+    // 🧠 Backend
+    "backend", "back end", "server side",
+    "node", "nodejs", "node js", "node.js",
+    "express", "expressjs", "express js",
+    "rest api", "restful api", "api development",
+    "mvc", "microservices",
+
+    // 🗄️ Database
+    "database", "dbms", "sql", "mysql", "postgresql",
+    "nosql", "mongodb", "mongo", "mongoose",
+    "database design", "query optimization",
+
+    // ☁️ Cloud & DevOps
+    "cloud", "cloud computing", "aws", "amazon web services",
+    "azure", "gcp", "google cloud",
+    "devops", "ci cd", "docker", "kubernetes", "jenkins",
+    "sre", "site reliability engineer",
+
+    // 🤖 AI / Data
+    "data science", "data analyst", "machine learning", "ml",
+    "artificial intelligence", "ai", "deep learning",
+    "nlp", "computer vision",
+
+    // 🔐 Security
+    "cybersecurity", "information security", "network security",
+    "penetration testing", "ethical hacking",
+
+    // ⚙️ Programming Languages
+    "java", "kotlin", "python", "c++", "c", "golang", "go", "rust",
+    "swift", "dart",
+
+    // 📱 Mobile / Cross-platform
+    "android", "android development",
+    "flutter", "react native", "cross platform",
+
+    // 🧪 Testing
     "testing", "qa", "quality assurance",
-    "it ", "information technology", "computer science", "cse", "btech", "b.tech"
+    "unit testing", "integration testing", "automation testing",
+
+    // 📚 Core CS
+    "data structures", "algorithms", "dsa",
+    "operating systems", "os",
+    "computer networks", "cn",
+
+    // 🎓 Education / Degree Keywords
+    "information technology", "computer science", "cse",
+    "btech", "b.tech", "bachelor of technology"
 )
 
 class JobRepository {

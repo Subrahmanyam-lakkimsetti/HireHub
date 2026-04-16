@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HireHub">
         <activity
+            android:name=".ui.activities.RoadmapDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.RoadmapActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.SavedJobsActivity"
             android:exported="false" />
         <activity

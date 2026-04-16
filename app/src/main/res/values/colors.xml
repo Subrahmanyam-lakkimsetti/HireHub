@@ -46,4 +46,10 @@
 
     <color name="bottom_nav_selected">#1565C0</color>
     <color name="bottom_nav_unselected">#9E9E9E</color>
+
+    <color name="divider">#E0E0E0</color>
+
+
+    <color name="surface_variant">#E8EAED</color>
+    <color name="primary_alpha">#2196F31A</color>
 </resources>

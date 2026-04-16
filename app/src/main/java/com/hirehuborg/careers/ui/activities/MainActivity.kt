@@ -3,15 +3,21 @@ package com.hirehuborg.careers.ui.activities
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
@@ -57,6 +63,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(binding.root)
 
         homeBinding    = LayoutTabHomeBinding.bind(
@@ -68,6 +75,19 @@ class MainActivity : AppCompatActivity() {
         profileBinding = LayoutTabProfileBinding.bind(
             binding.root.findViewById(R.id.tabProfile)
         )
+
+        // For Android 5.0 and above
+        ViewCompat.setOnApplyWindowInsetsListener(binding.statusBarBg) { view, insets ->
+            val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+            view.layoutParams.height = statusBarHeight
+            view.requestLayout()
+            insets
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            window.attributes.layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+        }
 
         setupBottomNav()
         setupHomeTab()
@@ -92,11 +112,25 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNav() {
         binding.bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navHome    -> showTab(0)
-                R.id.navJobs    -> showTab(1)
-                R.id.navProfile -> showTab(2)
+                R.id.navHome -> {
+                    showTab(0)
+                    true
+                }
+                R.id.navRoadmap -> {
+                    startActivity(Intent(this, RoadmapActivity::class.java))
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    true
+                }
+                R.id.navJobs -> {
+                    showTab(1)
+                    true
+                }
+                R.id.navProfile -> {
+                    showTab(2)
+                    true
+                }
+                else -> false
             }
-            true
         }
         binding.bottomNav.selectedItemId = R.id.navHome
     }
@@ -441,4 +475,6 @@ class MainActivity : AppCompatActivity() {
             else      -> "Good evening 🌙"
         }
     }
+
+
 }

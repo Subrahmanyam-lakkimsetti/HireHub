@@ -20,4 +20,6 @@
     <string name="recommended_roles">Recommended Roles</string>
     <string name="hirehub">HireHub</string>
     <string name="your_career_elevated">Your career, elevated.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

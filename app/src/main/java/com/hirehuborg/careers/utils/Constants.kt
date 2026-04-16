@@ -12,6 +12,8 @@ object Constants {
     const val RTDB_RESUMES_NODE = "resumes"
     const val MAX_PDF_SIZE_MB = 5.0
 
+    const val RTDB_ROADMAPS_NODE = "roadmaps"
+
     // Firebase Storage
     const val STORAGE_RESUMES_PATH = "resumes/"
 
